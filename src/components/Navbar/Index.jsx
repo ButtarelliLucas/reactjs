@@ -17,7 +17,7 @@ function classNames(...classes) {
 
 export default function Example() {
   return (
-    <Disclosure as="nav" className="bg-black">
+    <Disclosure as="nav" className="bg-cyan-500">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -48,7 +48,16 @@ export default function Example() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    {/* {navigation.map((item) => (
+
+
+
+
+
+
+
+
+
+                    {navigation.map((item) => (
                       <a
                         key={item.name}
                         href={item.href}
@@ -60,7 +69,17 @@ export default function Example() {
                       >
                         {item.name}
                       </a>
-                    ))} */}
+                    ))}
+
+
+
+
+
+
+
+
+
+                    
                   </div>
                 </div>
               </div>
