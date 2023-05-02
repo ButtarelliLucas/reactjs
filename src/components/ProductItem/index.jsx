@@ -8,6 +8,7 @@ import {
     Button,
     Chip,
   } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const ProductItem = ({ producto }) => {
      return (
@@ -18,6 +19,9 @@ const ProductItem = ({ producto }) => {
               <br />
               <br />
              <Card className=" w-72 bg-gradient-to-t from-gray-200">
+        
+        
+        <Link to={`${producto.id}`} >
         <CardHeader color="black" className="relative h-56 flex justify-center">
           <img
             src={producto.image}
@@ -25,6 +29,9 @@ const ProductItem = ({ producto }) => {
             className="h-full p-10"
           />
         </CardHeader>
+        </Link>
+
+
         <CardBody className="text-center items-center ">
           <Typography  className="mb-2 h-10 flex justify-center items-center">
           {producto.title}
