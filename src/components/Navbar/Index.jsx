@@ -1,23 +1,32 @@
 import { Fragment } from 'react'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
+import { Disclosure, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import CartWidget from '../CartWidget'
 import Counter from '../Counter'
-import Button from '../Button'
+// import Button from '../Button'
 import { NavLink } from 'react-router-dom'
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Button,
+} from "@material-tailwind/react";
 
-const navigation = [
-  { name: 'Dashboard', href: '#', current: false },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+
+
 export default function Example() {
+  
+  const activeStyle = {
+    backgroundColor: '#00838f',
+  };
   return (
     <Disclosure as="nav" className="bg-cyan-700">
       {({ open }) => (
@@ -50,21 +59,45 @@ export default function Example() {
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                  <NavLink to="/home"> 
-                  <Button texto="Home" />
+                    <NavLink to="/home" className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                      <div>Home</div>
 
-                  </NavLink>
-                  <NavLink to="/products"> 
-                  <Button texto="Productos" />
-                  </NavLink>
-                  <Button texto="Contacto" />
+                    </NavLink>
+                    <NavLink to="/products" className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                      <div>Todos Los Productos</div>
+                    </NavLink>
+                    <Menu className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                      <MenuHandler>
+                        <div className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" >Categorias</div>
+                      </MenuHandler>
+                      <MenuList >
+                      <NavLink to="/products/category/jewelery">
+                        <MenuItem>Jewelery</MenuItem>
+                      </NavLink>
+                      <NavLink to="/products/category/electronics">
+                        <MenuItem>Electronics</MenuItem>
+                        </NavLink>
+                        <NavLink to="/products/category/men's clothing">
+
+                        <MenuItem>Men's clothing</MenuItem>
+                        </NavLink>
+                        <NavLink to="/products/category/women's clothing">
+                        <MenuItem>Women's clothing</MenuItem>
+                        </NavLink>
+                      </MenuList>
+                    </Menu>
+                    <NavLink to="/Contacto" className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                      <div>Contacto</div>
+                    </NavLink>
 
 
 
 
 
 
-                       {/* NAVIGATION MAP */}
+
+
+                    {/* NAVIGATION MAP */}
                     {/* {navigation.map((item) => (
                       <a
                         key={item.name}
@@ -87,7 +120,7 @@ export default function Example() {
 
 
 
-                    
+
                   </div>
                 </div>
               </div>
@@ -109,10 +142,10 @@ export default function Example() {
                     </svg>
                 </button> */}
                 <NavLink to="/cart">
-                <CartWidget/>
+                  <CartWidget />
                 </NavLink>
-                <Counter/>
-                
+                <Counter />
+
                 {/* Profile dropdown */}
                 {/* <Menu as="div" className="relative ml-3">
                   <div>
@@ -174,6 +207,15 @@ export default function Example() {
 
           <Disclosure.Panel className="sm:hidden">
             <div className="space-y-1 px-2 pb-3 pt-2">
+
+
+              <NavLink to="/home">
+                <div>Home</div>
+
+              </NavLink>
+              <NavLink to="/products">
+                <div>Productos</div>
+              </NavLink>
               {/* {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -188,6 +230,10 @@ export default function Example() {
                   {item.name}
                 </Disclosure.Button>
               ))} */}
+
+
+
+
             </div>
           </Disclosure.Panel>
         </>
