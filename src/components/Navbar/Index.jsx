@@ -12,7 +12,7 @@ import {
   MenuItem,
   Button,
 } from "@material-tailwind/react";
-import {logo} from '/Users/Kaaz/Desktop/clases/React Js/Tienda/public/img/cobla.png';
+import logo from '../Navbar/cobla.png';
 
 
 
