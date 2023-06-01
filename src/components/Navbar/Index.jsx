@@ -12,6 +12,7 @@ import {
   MenuItem,
   Button,
 } from "@material-tailwind/react";
+import {logo} from '/Users/Kaaz/Desktop/clases/React Js/Tienda/public/img/cobla.png';
 
 
 
@@ -25,13 +26,14 @@ function classNames(...classes) {
 export default function Example() {
   
   const activeStyle = {
-    backgroundColor: '#00838f',
+    backgroundColor: ' #EF6C00',
+    color: 'white',
   };
   return (
-    <Disclosure as="nav" className="bg-cyan-700">
+    <Disclosure as="nav" className="bg-gradient-to-r from-orange-600 to-orange-900">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-20">
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -47,28 +49,28 @@ export default function Example() {
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                 <div className="flex flex-shrink-0 items-center">
                   <img
-                    className="block h-8 w-auto lg:hidden"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    className="block h-10 w-auto lg:hidden"
+                    src={logo}
                     alt="Your Company"
                   />
                   <img
                     className="hidden h-8 w-auto lg:block"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src={logo}
                     alt="Your Company"
                   />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
-                    <NavLink to="/home" className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                    <NavLink to="/home" className="transition text-gray-900 hover:bg-orange-800 hover:  rounded-full hover:text-white px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
                       <div>Home</div>
 
                     </NavLink>
-                    <NavLink to="/products" className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
-                      <div>Todos Los Productos</div>
+                    <NavLink to="/products" className="transition text-gray-900 hover:bg-orange-800 hover:  rounded-full hover:text-white px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                      <div>Productos</div>
                     </NavLink>
-                    <Menu className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                    <Menu className="transition text-gray-900 hover:bg-orange-800 hover:  rounded-full hover:text-white px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
                       <MenuHandler>
-                        <div className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" >Categorias</div>
+                        <div className="transition text-gray-900 hover:bg-orange-800 hover:  rounded-full hover:text-white px-3 py-2 text-sm font-medium" >Categorias</div>
                       </MenuHandler>
                       <MenuList >
                       <NavLink to="/products/category/jewelery">
@@ -86,7 +88,7 @@ export default function Example() {
                         </NavLink>
                       </MenuList>
                     </Menu>
-                    <NavLink to="/Contacto" className="transition text-white bg-cyan-500 hover:bg-cyan-800 hover:  rounded-full  px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
+                    <NavLink to="/Contacto" className="transition text-gray-900 hover:bg-orange-800 hover:  rounded-full hover:text-white px-3 py-2 text-sm font-medium" style={({ isActive }) => (isActive ? activeStyle : undefined)} >
                       <div>Contacto</div>
                     </NavLink>
 
