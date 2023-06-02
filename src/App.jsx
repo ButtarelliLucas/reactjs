@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar/index";
 import axios from "axios";
 import ProductItem from "./components/ProductItem/index";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "./components/Home/index";
+import Home from "./components/Home/Index";
 import ProductDetail from "./components/ProductDetail/index";
 import ItemListContainer from "./components/ItemListContainer";
 
