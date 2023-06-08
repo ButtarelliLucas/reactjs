@@ -36,7 +36,7 @@ export default function App() {
   return (
     <div className=" bg-gray-100">
       <Navbar  />
-     
+     {/*
      <br />
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
@@ -44,7 +44,7 @@ export default function App() {
 
 
 
-        <Route
+        <Route 
           path="/products"
           element={<ItemListContainer/>}
            
@@ -61,11 +61,7 @@ export default function App() {
         <Route path="/404" element={<h2>404 Not Found</h2>} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
-      {/* <div  className="grid grid-cols-4 gap-x-8 gap-y-8 ">
-      {productos.map((producto, ) => (
-        <ProductItem producto={producto} key={producto.id} />
-      ))}
-      </div> */}
+*/}
 
 
 

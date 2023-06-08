@@ -8,7 +8,11 @@ module.exports = withMT({
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      gridAutoColumns: {
+        '2fr': 'minmax(0, 4fr)',
+      }
+    },
   },
   plugins: [],
 });

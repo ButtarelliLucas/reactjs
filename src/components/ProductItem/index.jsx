@@ -15,7 +15,7 @@ const ProductItem = ({ producto }) => {
 
 <ThemeProvider>
 
-         <div className="">
+         <div className="grid-flow-col">
               <br />
               <br />
              <Card className=" w-72 bg-gradient-to-t from-gray-200">

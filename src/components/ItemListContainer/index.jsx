@@ -44,7 +44,9 @@ const ItemListContainer = () => {
 
   return (
     <>
+    <div className="flex justify-center">
     <ItemList productos={productos} />
+    </div>
     </>
   );
 };
