@@ -1,37 +1,35 @@
-
-import { Card, CardBody, CardFooter, CardHeader, ThemeProvider, Button } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import ItemList from "../ItemList";
-
+import {  getProductos } from "../../asyncmock";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {categoryId} = useParams();
- console.log (productos)
-  const getProducto = async () => {
-    const url= categoryId === undefined ? 'https://fakestoreapi.com/products' : `https://fakestoreapi.com/products/category/${categoryId}`
+  const { categoryId } = useParams();
 
-    let url2;
-
-    if (categoryId=== undefined){url2= 'https://fakestoreapi.com/products'}
-
-    else {url2= `https://fakestoreapi.com/products/category/${categoryId}`}
-
-
-    try {
-      const response = await fetch( url2 );
-      const data = await response.json();
-      setProductos(data);
-      setLoading(false);
-    } catch (error) {
-      setProductos([]);
-    }
-  };
-
+  console.log(categoryId)
   useEffect(() => {
-    getProducto();
+    const fetchProductos = async () => {
+      try {
+        let data;
+        if (categoryId) {
+          data = await getProductos();
+          console.log(data)
+          console.log(categoryId)
+          setProductos (data.filter((producto) => producto.category === categoryId));
+        } else {
+          data = await getProductos();
+          setProductos(data);
+        }
+        setLoading(false);
+      } catch (error) {
+        setProductos([]);
+        setLoading(false);
+      }
+    };
+
+    fetchProductos();
   }, [categoryId]);
 
   if (!productos) {
@@ -43,11 +41,9 @@ const ItemListContainer = () => {
   }
 
   return (
-    <>
     <div className="flex justify-center">
-    <ItemList productos={productos} />
+      <ItemList productos={productos} />
     </div>
-    </>
   );
 };
 

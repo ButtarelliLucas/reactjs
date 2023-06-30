@@ -1,67 +1,35 @@
-
-import { useEffect, useState } from "react";
-
-// import CounterMuestra from "./components/Counter/CounterMuestra";
-import IconPlus from "./components/Icons";
-
 import Navbar from "./components/Navbar/index";
-import axios from "axios";
-import ProductItem from "./components/ProductItem/index";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./components/Home/Index";
 import ProductDetail from "./components/ProductDetail/index";
 import ItemListContainer from "./components/ItemListContainer";
-
-//  Formas Viejas
-const URL_API = "https://fakestoreapi.com/products";
+import P404 from "./components/404/P404";
 
 export default function App() {
-  const [productos, setProductos] = useState([]);
-
-  const getProductos = async () => {
-    try {
-      const res = await axios(URL_API);
-      setProductos(res.data);
-    } catch (error) {
-      console.log("ERROR: " + error);
-    }
-  };
-
-  useEffect(() => {
-    getProductos();
-  }, []);
-
 
 
   return (
     <div className=" bg-gray-100">
+      <BrowserRouter>
       <Navbar  />
-     {/*
+     
      <br />
+
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
-
-
-
-        <Route 
-          path="/products"
-          element={<ItemListContainer/>}
-           
-        />
-
-
-        <Route 
-          path="/products/category/:categoryId" 
-          element={ <ItemListContainer/>
-          }/>
-
+        <Route path="/products"element={<ItemListContainer/>}/>
         <Route path="/products/:id" element={<ProductDetail />} />
+        <Route path="/products/category/:categoryId" element={ <ItemListContainer/>}/>
+        
+        <Route path="/products/category/:categoryId/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<h3>Cart</h3>} />
-        <Route path="/404" element={<h2>404 Not Found</h2>} />
+        <Route path="/404" element={<P404/>} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
-*/}
+      </BrowserRouter>
+
+
 
 
 

@@ -5,7 +5,7 @@ const ItemList = (productos) => {
     console.log (productos.productos)
 
   return (
-    <div  className="grid grid-cols-4 grid-rows-5 gap-x-8 gap-y-8 ml-0">
+    <div  className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4 xl:gap-x-8">
           {productos.productos.map((producto ) => (
             <ProductItem producto={producto} key={producto.id} />
           ))}

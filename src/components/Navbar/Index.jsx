@@ -146,7 +146,7 @@ export default function Example() {
                 <NavLink to="/cart">
                   <CartWidget />
                 </NavLink>
-                <Counter />
+              
 
                 {/* Profile dropdown */}
                 {/* <Menu as="div" className="relative ml-3">
