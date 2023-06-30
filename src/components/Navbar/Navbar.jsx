@@ -26,7 +26,7 @@ function classNames(...classes) {
 
 
 export default function Example() {
-  
+
   const activeStyle = {
     backgroundColor: ' #EF6C00',
     color: 'white',
@@ -75,18 +75,18 @@ export default function Example() {
                         <div className="transition text-gray-900 hover:bg-orange-800 hover:  rounded-full hover:text-white px-3 py-2 text-sm font-medium" >Categorias</div>
                       </MenuHandler>
                       <MenuList >
-                      <NavLink to="/products/category/jewelery">
-                        <MenuItem>Jewelery</MenuItem>
-                      </NavLink>
-                      <NavLink to="/products/category/electronics">
-                        <MenuItem>Electronics</MenuItem>
+                        <NavLink to="/products/category/jewelery">
+                          <MenuItem>Jewelery</MenuItem>
+                        </NavLink>
+                        <NavLink to="/products/category/electronics">
+                          <MenuItem>Electronics</MenuItem>
                         </NavLink>
                         <NavLink to="/products/category/men's clothing">
 
-                        <MenuItem>Men's clothing</MenuItem>
+                          <MenuItem>Men's clothing</MenuItem>
                         </NavLink>
                         <NavLink to="/products/category/women's clothing">
-                        <MenuItem>Women's clothing</MenuItem>
+                          <MenuItem>Women's clothing</MenuItem>
                         </NavLink>
                       </MenuList>
                     </Menu>
@@ -151,7 +151,7 @@ export default function Example() {
                 <NavLink to="/cart">
                   <CartWidget />
                 </NavLink>
-              
+
 
                 {/* Profile dropdown */}
                 {/* <Menu as="div" className="relative ml-3">
