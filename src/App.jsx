@@ -4,7 +4,7 @@ import Home from "./components/Home/Home";
 import ProductDetail from "./components/ProductDetail/ProductDetail";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Error from "./components/Error/Error";
-import Cart from "./components/Cart/Cart";
+// import Cart from "./components/Cart/Cart";
 import { useState } from "react";
 
 
@@ -29,7 +29,7 @@ export default function App() {
         <Route path="/products/category/:categoryId" element={ <ItemListContainer/>}/>
         
         <Route path="/products/category/:categoryId/:id" element={<ProductDetail />} />
-        <Route path="/cart" element={<Cart/> } />
+        {/* <Route path="/cart" element={<Cart/> } /> */}
         
 
         <Route path="/404" element={<Error/>} />
