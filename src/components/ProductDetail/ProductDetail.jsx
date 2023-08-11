@@ -1,12 +1,19 @@
 import { Card, CardBody, CardFooter, CardHeader, ThemeProvider, Button } from "@material-tailwind/react";
 import { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { getProductos } from "../../asyncmock";
+import ItemCount from "../ItemCount/ItemCount";
 
 const ProductDetail = () => {
   const [producto, setProducto] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const [agregarCantidad, setAgregarCantidad] = useState(0)
+
+  const manejadorCantidad = (cantidad) => {
+    setAgregarCantidad(cantidad);
+    console.log ("productos agregados " + cantidad)
+  }
 
   const getProducto = async () => {
     try {
@@ -17,6 +24,13 @@ const ProductDetail = () => {
       setProducto(null);
     }
   };
+
+
+
+
+
+
+
 
   useEffect(() => {
     getProducto();
@@ -65,12 +79,11 @@ const ProductDetail = () => {
                     </div>
                   </span>
                 </span>
-                <Button
-                  className="bg-orange-600 rounded-full mt-5 item"
-                  color="orange"
-                >
-                  Add to Cart $ {producto.price}
-                </Button>
+                { agregarCantidad > 0 ? (<Link to= "/cart" > 
+                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" onClick={() => funcionAgregar(contador)}> Terminar Compra </Button>
+                </Link>) : (
+                <ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad}/>)
+                }
               </CardBody>
               <div></div>
               <CardFooter divider className="p-2">
