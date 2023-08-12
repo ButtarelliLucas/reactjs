@@ -1,8 +1,9 @@
 import { Card, CardBody, CardFooter, CardHeader, ThemeProvider, Button } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
 import { getProductos } from "../../asyncmock";
 import ItemCount from "../ItemCount/ItemCount";
+import { CartContext } from "../../context/CartContext";
 
 const ProductDetail = () => {
   const [producto, setProducto] = useState({});
@@ -10,10 +11,9 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [agregarCantidad, setAgregarCantidad] = useState(0)
 
-  const manejadorCantidad = (cantidad) => {
-    setAgregarCantidad(cantidad);
-    console.log ("productos agregados " + cantidad)
-  }
+  const {agregarProducto} =  useContext(CartContext);
+
+ 
 
   const getProducto = async () => {
     try {
@@ -24,6 +24,13 @@ const ProductDetail = () => {
       setProducto(null);
     }
   };
+  const manejadorCantidad = (cantidad) => {
+    setAgregarCantidad(cantidad);
+    console.log ("productos agregados " + cantidad)
+
+    const item = {id, title , price};
+    agregarProducto (item, cantidad)
+  }
 
 
 
@@ -79,9 +86,17 @@ const ProductDetail = () => {
                     </div>
                   </span>
                 </span>
-                { agregarCantidad > 0 ? (<Link to= "/cart" > 
+                { agregarCantidad > 0 ? ( 
+                <div> 
+                  <Link to= "/products " > 
+                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" onClick={() => funcionAgregar(contador)}> ⬅ Seguir Comprando </Button>
+                </Link>
+                <br />
+                <Link to= "/cart" > 
                 <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" onClick={() => funcionAgregar(contador)}> Terminar Compra </Button>
-                </Link>) : (
+                </Link>  
+                
+                </div>) : (
                 <ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad}/>)
                 }
               </CardBody>

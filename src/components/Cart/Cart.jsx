@@ -3,7 +3,7 @@
 
 import { Fragment, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { XMarkIcon } from '@heroicons/react/24/outline'
+// import { XMarkIcon } from '@heroicons/react/24/outline'
 
 const products = [
   {
@@ -72,7 +72,7 @@ export default function Cart() {
                             onClick={() => setOpen(false)}
                           >
                             <span className="sr-only">Cerrar Panel</span>
-                            <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                            {/* <XMarkIcon className="h-6 w-6" aria-hidden="true" /> */}
                           </button>
                         </div>
                       </div>
