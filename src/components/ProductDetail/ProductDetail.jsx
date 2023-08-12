@@ -79,9 +79,17 @@ const ProductDetail = () => {
                     </div>
                   </span>
                 </span>
-                { agregarCantidad > 0 ? (<Link to= "/cart" > 
+                { agregarCantidad > 0 ? ( 
+                <div> 
+                  <Link to= "/products " > 
+                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" onClick={() => funcionAgregar(contador)}> ⬅ Seguir Comprando </Button>
+                </Link>
+                <br />
+                <Link to= "/cart" > 
                 <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" onClick={() => funcionAgregar(contador)}> Terminar Compra </Button>
-                </Link>) : (
+                </Link>  
+                
+                </div>) : (
                 <ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad}/>)
                 }
               </CardBody>
