@@ -20,9 +20,9 @@ const CartWidget = () => {
 
             </button>
 
-                { 
-                 cantidadTotal > 0 && <div className="rounded-full p-1 text-gray-900">{cantidadTotal}</div>
-                }
+            {
+                cantidadTotal > 0 && <div className="rounded-full p-1 text-gray-900">{cantidadTotal}</div>
+            }
             <div>
 
             </div>

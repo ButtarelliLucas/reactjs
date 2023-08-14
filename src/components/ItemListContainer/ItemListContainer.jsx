@@ -1,27 +1,39 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
-import {  getProductos } from "../../asyncmock";
+import { db } from "../../services/config";
+import { getDocs, collection, query, where, doc, updateDoc } from 'firebase/firestore';
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
 
-  console.log(categoryId)
   useEffect(() => {
     const fetchProductos = async () => {
       try {
-        let data;
+        const misProductos = query(collection(db, "tiendaReactJs"));
+
+        const respuesta = await getDocs(misProductos);
+        const data = respuesta.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+        let filteredProductos = data;
+
+        // const descontarStock = async (producto) => {
+
+        //   const productoRef = doc(db, "tiendaReactJs", producto.id);
+        //   const nuevoStock = producto.stock -1;
+
+        //   await updateDoc (productoRef, {stock: nuevoStock})
+        // }
+
+
+
         if (categoryId) {
-          data = await getProductos();
-          console.log(data)
-          console.log(categoryId)
-          setProductos (data.filter((producto) => producto.category === categoryId));
-        } else {
-          data = await getProductos();
-          setProductos(data);
+          filteredProductos = data.filter((producto) => producto.category === categoryId);
         }
+
+        setProductos(filteredProductos);
         setLoading(false);
       } catch (error) {
         setProductos([]);
@@ -48,3 +60,4 @@ const ItemListContainer = () => {
 };
 
 export default ItemListContainer;
+

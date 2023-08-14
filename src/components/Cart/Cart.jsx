@@ -6,31 +6,31 @@ import CartItem from '../CartItem/CartItem'
 
 const Cart = () => {
 
-    const {carrito, limpiarCarrito, total, cantidadTotal} =useContext(CartContext);
+  const { carrito, limpiarCarrito, total, cantidadTotal } = useContext(CartContext);
 
 
-    if (cantidadTotal === 0 ){
-      return (
-        <>
-      <h2>No hay productos en el carrito</h2>
-      <Link to="/products">
-      Ir a comprar
-      </Link>
+  if (cantidadTotal === 0) {
+    return (
+      <>
+        <h2>No hay productos en el carrito</h2>
+        <Link to="/products">
+          Ir a comprar
+        </Link>
       </>
-      )
-    }
+    )
+  }
 
   return (
     <div>
-      {carrito.map(producto => <CartItem key={producto.id} {...producto}/>)}
-    <h2> Total: $ {total}</h2>
-    <h3>Productos en el carrito : {cantidadTotal}</h3>
-    <button onClick={()=>limpiarCarrito()}>Limpiar Carrito</button>
-    <Link to="/checkout"> 
-    Finalizar Compra
-    </Link>
+      {carrito.map(producto => <CartItem key={producto.id} {...producto} />)}
+      <h2> Total: $ {total}</h2>
+      <h3>Productos en el carrito : {cantidadTotal}</h3>
+      <button onClick={() => limpiarCarrito()}>Limpiar Carrito</button>
+      <Link to="/checkout">
+        Finalizar Compra
+      </Link>
     </div>
-    ) 
+  )
 }
 
 export default Cart

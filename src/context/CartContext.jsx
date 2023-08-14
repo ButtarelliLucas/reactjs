@@ -50,9 +50,18 @@ export const CarritoProvider = ({children}) => {
         setCantidadTotal (0);
         setTotal(0);
     }
+
+    const descontarStock = async (producto) => {
+
+        const productoRef = doc(db, "tiendaReactJs", producto.id);
+        const nuevoStock = producto.stock -1;
+
+        await updateDoc (productoRef, {stock: nuevoStock})
+      }
+
     return (
 
-        <CartContext.Provider value={{carrito, total, cantidadTotal, agregarProducto, eliminarProducto, limpiarCarrito}}>
+        <CartContext.Provider value={{carrito, total, cantidadTotal, agregarProducto, eliminarProducto, limpiarCarrito, descontarStock}}>
             {children}
         </CartContext.Provider>
     )

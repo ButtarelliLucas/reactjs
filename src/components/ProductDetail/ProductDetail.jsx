@@ -11,9 +11,9 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [agregarCantidad, setAgregarCantidad] = useState(0)
 
-  const {agregarProducto} =  useContext(CartContext);
+  const { agregarProducto, descontarStock } = useContext(CartContext);
 
- 
+
 
   const getProducto = async () => {
     try {
@@ -26,12 +26,12 @@ const ProductDetail = () => {
   };
   const manejadorCantidad = (cantidad) => {
     setAgregarCantidad(cantidad);
-    console.log ("productos agregados " + cantidad
+    console.log("productos agregados " + cantidad
     )
 
-    const item = { id: producto.id , title: producto.title, precio: producto.price, image: producto.image, stock: producto.stock};
+    const item = { id: producto.id, title: producto.title, precio: producto.price, image: producto.image, stock: producto.stock };
     agregarProducto(item, cantidad);
-    
+
   }
 
 
@@ -88,17 +88,17 @@ const ProductDetail = () => {
                     </div>
                   </span>
                 </span>
-                { agregarCantidad > 0 ? ( 
-                <div> 
-                <Link to= "/products " > 
-                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > ⬅ Seguir Comprando </Button>
-                </Link>
-                <br />
-                <Link to= "/cart" > 
-                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > Terminar Compra </Button>
-                </Link>  
-                </div>) : 
-                (<ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad}/>)
+                {agregarCantidad > 0 ? (
+                  <div>
+                    <Link to="/products " >
+                      <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > ⬅ Seguir Comprando </Button>
+                    </Link>
+                    <br />
+                    <Link to="/cart" >
+                      <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > Terminar Compra </Button>
+                    </Link>
+                  </div>) :
+                  (<ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad} />)
                 }
               </CardBody>
               <div></div>
