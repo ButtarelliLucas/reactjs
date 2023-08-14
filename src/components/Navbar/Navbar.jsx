@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { Disclosure, Transition } from '@headlessui/react'
 // import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import CartWidget from '../CartWidget/CartWidget'
-import Counter from '../Counter/Counter'
+
 // import Button from '../Button'
 import { NavLink } from 'react-router-dom'
 import {

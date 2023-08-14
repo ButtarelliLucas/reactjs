@@ -10,14 +10,27 @@ const ItemListContainer = () => {
   const { categoryId } = useParams();
 
   useEffect(() => {
-    const fetchProductos = async () => {
-      try {
-        const misProductos = query(collection(db, "tiendaReactJs"));
+    // const fetchProductos = async () => {
+    //   try {
+        const misProductos = categoryId ? query(collection(db, "tiendaReactJs"), where("category", "==", categoryId)): collection(db, "tiendaReactJs");
+        
+        getDocs(misProductos)
+            .then( res => {
+              const nuevosProductos = res.docs.map( doc => {
+                  const data = doc.data ();
+                  return {id: doc.id, ...data}
+              })
+              setProductos (nuevosProductos)
+            })
+            .catch (error => console.log (error))
+          }, [categoryId]);
 
-        const respuesta = await getDocs(misProductos);
-        const data = respuesta.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
-        let filteredProductos = data;
+
+        // const respuesta = await getDocs(misProductos);
+        // const data = respuesta.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+
+        // let filteredProductos = data;
 
         // const descontarStock = async (producto) => {
 
@@ -29,28 +42,28 @@ const ItemListContainer = () => {
 
 
 
-        if (categoryId) {
-          filteredProductos = data.filter((producto) => producto.category === categoryId);
-        }
+    //     if (categoryId) {
+    //       filteredProductos = data.filter((producto) => producto.category === categoryId);
+    //     }
 
-        setProductos(filteredProductos);
-        setLoading(false);
-      } catch (error) {
-        setProductos([]);
-        setLoading(false);
-      }
-    };
+    //     setProductos(filteredProductos);
+    //     setLoading(false);
+    //   } catch (error) {
+    //     setProductos([]);
+    //     setLoading(false);
+    //   }
+    // };
 
-    fetchProductos();
-  }, [categoryId]);
+    // fetchProductos();
+ 
 
-  if (!productos) {
-    return <Navigate to="/404" />;
-  }
+  // if (!productos) {
+  //   return <Navigate to="/404" />;
+  // }
 
-  if (loading) {
-    return <h2>Loading...</h2>;
-  }
+  // if (loading) {
+  //   return <h2>Loading...</h2>;
+  // }
 
   return (
     <div className="flex justify-center">
