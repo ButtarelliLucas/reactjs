@@ -26,10 +26,12 @@ const ProductDetail = () => {
   };
   const manejadorCantidad = (cantidad) => {
     setAgregarCantidad(cantidad);
-    console.log ("productos agregados " + cantidad)
+    console.log ("productos agregados " + cantidad
+    )
 
-    const item = {id, title , price};
-    agregarProducto (item, cantidad)
+    const item = { id, title: producto.title, price: producto.price };
+    agregarProducto(item, cantidad);
+    
   }
 
 
@@ -88,16 +90,15 @@ const ProductDetail = () => {
                 </span>
                 { agregarCantidad > 0 ? ( 
                 <div> 
-                  <Link to= "/products " > 
-                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" onClick={() => funcionAgregar(contador)}> ⬅ Seguir Comprando </Button>
+                <Link to= "/products " > 
+                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > ⬅ Seguir Comprando </Button>
                 </Link>
                 <br />
                 <Link to= "/cart" > 
-                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" onClick={() => funcionAgregar(contador)}> Terminar Compra </Button>
+                <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > Terminar Compra </Button>
                 </Link>  
-                
-                </div>) : (
-                <ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad}/>)
+                </div>) : 
+                (<ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad}/>)
                 }
               </CardBody>
               <div></div>
