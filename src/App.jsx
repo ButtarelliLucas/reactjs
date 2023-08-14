@@ -33,6 +33,7 @@ export default function App() {
         
         <Route path="/products/category/:categoryId/:id" element={<ProductDetail />} />
         <Route path="/cart" element={<Cart/> } />
+        <Route path="/checkout" element= {<h2> bancame un flan porfis, me falta esto solamente</h2>}/>
         
 
         <Route path="/404" element={<Error/>} />

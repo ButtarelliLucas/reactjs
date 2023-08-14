@@ -29,7 +29,7 @@ const ProductDetail = () => {
     console.log ("productos agregados " + cantidad
     )
 
-    const item = { id, title: producto.title, price: producto.price };
+    const item = { id: producto.id , title: producto.title, precio: producto.price, image: producto.image, stock: producto.stock};
     agregarProducto(item, cantidad);
     
   }
