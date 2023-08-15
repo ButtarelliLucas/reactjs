@@ -8,6 +8,7 @@ import Cart from "./components/Cart/Cart";
 import { useState } from "react";
 import { CarritoProvider } from "./context/CartContext";
 import Formulario from "./components/Formulario/Formulario";
+import Checkout from "./components/Checkout/Checkout";
 // import Productos from "./components/Productos/Productos";
 
 
@@ -35,7 +36,7 @@ export default function App() {
 
           <Route path="/products/category/:categoryId/:id" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<h2> bancame un flan porfis, me falta esto solamente</h2>} />
+          <Route path="/checkout" element={<Checkout />} />
           <Route path="/contacto" element={<Formulario />} />
 
           <Route path="/404" element={<Error />} />

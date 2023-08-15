@@ -1,7 +1,8 @@
 import { Card, CardBody, CardFooter, CardHeader, ThemeProvider, Button } from "@material-tailwind/react";
 import { useEffect, useState, useContext } from "react";
 import { Link, Navigate, useParams } from "react-router-dom";
-import { getProductos } from "../../asyncmock";
+import { doc, getDoc } from 'firebase/firestore'; // Agregado
+import { db } from "../../services/config"; // Agregado
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../context/CartContext";
 
@@ -11,35 +12,33 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [agregarCantidad, setAgregarCantidad] = useState(0)
 
-  const { agregarProducto, descontarStock } = useContext(CartContext);
-
-
+  const { agregarProducto } = useContext(CartContext);
 
   const getProducto = async () => {
     try {
-      const data = await getProductos();
-      setProducto(data.find(producto => producto.id === +id));
+      const productoDocRef = doc(db, "tiendaReactJs", id); // Cambio en cómo se obtiene el producto
+      const productoDocSnapshot = await getDoc(productoDocRef);
+
+      if (productoDocSnapshot.exists()) {
+        const productoData = productoDocSnapshot.data();
+        setProducto({ id: productoDocSnapshot.id, ...productoData });
+      } else {
+        setProducto(null);
+      }
+
       setLoading(false);
     } catch (error) {
+      console.error("Error al obtener el producto:", error);
       setProducto(null);
     }
   };
+
   const manejadorCantidad = (cantidad) => {
     setAgregarCantidad(cantidad);
-    console.log("productos agregados " + cantidad
-    )
 
     const item = { id: producto.id, title: producto.title, precio: producto.price, image: producto.image, stock: producto.stock };
     agregarProducto(item, cantidad);
-
   }
-
-
-
-
-
-
-
 
   useEffect(() => {
     getProducto();

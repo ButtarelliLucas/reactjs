@@ -1,39 +1,55 @@
-import React from 'react'
-import { useContext } from 'react'
-import { CartContext } from '../../context/CartContext'
-import { Link } from 'react-router-dom'
-import CartItem from '../CartItem/CartItem'
+import React from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
+import CartItem from '../CartItem/CartItem';
+import './Cart.css';
 
 const Cart = () => {
-
   const { carrito, limpiarCarrito, total, cantidadTotal } = useContext(CartContext);
-
 
   if (cantidadTotal === 0) {
     return (
-      <>
+      <div className="cart-container">
         <h2>No hay productos en el carrito</h2>
-        <Link to="/products">
+        <Link to="/products" className="cart-link">
           Ir a comprar
         </Link>
-      </>
-    )
+      </div>
+    );
   }
 
   return (
-    <div>
-      {carrito.map(producto => <CartItem key={producto.id} {...producto} />)}
-      <h2> Total: $ {total}</h2>
-      <h3>Productos en el carrito : {cantidadTotal}</h3>
-      <button onClick={() => limpiarCarrito()}>Limpiar Carrito</button>
-      <Link to="/checkout">
-        Finalizar Compra
-      </Link>
+    <div className="cart-container">
+      <div className="cart-list">
+        {carrito.map(producto => (
+          <CartItem key={producto.id} {...producto} />
+        ))}
+      </div>
+      <div className="cart-total">
+        <h3 className="cart-items-count">Productos en el carrito: {cantidadTotal}</h3>
+        <h2>Total: $ {total}</h2>
+      </div>
+      <div className="cart-buttons">
+        <button
+          className="transition bg-orange-600 rounded-full text-white hover:bg-orange-800 hover:text-white px-3 py-2 text-sm font-medium"
+          onClick={() => limpiarCarrito()}
+        >
+          Limpiar Carrito
+        </button>
+        <Link to="/checkout" className="cart-link">
+          <button
+            className="transition bg-orange-600 rounded-full text-white hover:bg-orange-800 hover:text-white px-3 py-2 text-sm font-medium"
+          >
+            Finalizar Compra
+          </button>
+        </Link>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;
 
 
 
