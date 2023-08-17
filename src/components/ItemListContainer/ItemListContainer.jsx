@@ -28,7 +28,7 @@ const ItemListContainer = () => {
   }, [categoryId]);
 
   if (loading) {
-    return <h2>Loading...</h2>; 
+    return <h2 className="">Loading...</h2>; 
   }
 
   if (!productos) {
@@ -36,7 +36,7 @@ const ItemListContainer = () => {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex animate__animated animate__fadeIn justify-center">
       <ItemList productos={productos} />
     </div>
   );

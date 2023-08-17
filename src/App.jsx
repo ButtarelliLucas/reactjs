@@ -16,16 +16,15 @@ import Checkout from "./components/Checkout/Checkout";
 
 export default function App() {
 
-  const [showCart, setShowCart] = useState(false);
+
 
   return (
-    <div className=" bg-gray-100">
+    <div className="">
       <CarritoProvider>
 
         <Navbar />
 
         <br />
-        {/* <Productos/> */}
 
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />

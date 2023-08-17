@@ -49,7 +49,7 @@ const ProductDetail = () => {
   }
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return <h2 className=" animate-pulse">Loading...</h2>;
   }
 
   return (
