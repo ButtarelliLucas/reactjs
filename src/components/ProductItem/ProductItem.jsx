@@ -40,7 +40,7 @@ const ProductItem = ({ producto }) => {
 
           </CardBody>
           <CardFooter divider className="flex items-center justify-between py-3">
-            <Button className=" bg-orange-600 rounded-full " color="orange"> Add to Cart</Button> <Chip className="rounded-full bg-orange-700 " value={"$ " + producto.price}> ${producto.price}</Chip>
+            <Button className=" bg-orange-600 rounded-full " color="orange"> Stock: {producto.stock} </Button> <Chip className="rounded-full bg-orange-700 " value={"$ " + producto.price}> ${producto.price}</Chip>
           </CardFooter>
         </Card>
       </div>

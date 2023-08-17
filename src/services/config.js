@@ -7,7 +7,7 @@ import { getFirestore } from "firebase/firestore"
 //getFirestore se utiliza para obtener una instancia de Firestore.
 //Esto es un objetoq eu contiene toda nuestra informacion de cuenta junto con la apikey
 const firebaseConfig = {
-    apiKey: "AIzaSyDe-p506hv_0cA5UDogUY7zxT5d0A0uGhw",
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
     authDomain: "tienda-coder-reactjs-18bcc.firebaseapp.com",
     projectId: "tienda-coder-reactjs-18bcc",
     storageBucket: "tienda-coder-reactjs-18bcc.appspot.com",
