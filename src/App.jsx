@@ -27,7 +27,7 @@ export default function App() {
         <br />
 
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/" element={<Navigate to="/products" />} />
           <Route path="/home" element={<Home />} />
           <Route path="/products" element={<ItemListContainer />} />
           <Route path="/products/:id" element={<ProductDetail />} />

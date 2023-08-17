@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { db } from "../../services/config";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, doc,  } from "firebase/firestore";
 import './Checkout.css'
 
 
@@ -43,7 +43,7 @@ const Checkout = () => {
             nombre,
             apellido,
             telefono,
-            email
+            email,
         };
 
         //Paso 2: Guardamos la orden en la base de datos
