@@ -52,64 +52,65 @@ const ProductDetail = () => {
     return <h2 className=" animate-pulse">Loading...</h2>;
   }
 
+
   return (
-    <>
-      <ThemeProvider>
-        <div className="grid justify-items-center">
-          <div className="w-3/4">
-            <br />
-            <br />
-            <Card className="bg-gradient-to-t from-gray-200 grid grid-cols-2">
-              <div className="flex justify-center">
-                <CardHeader className="flex justify-center">
-                  <img
-                    src={producto.image}
-                    alt="img-blur-shadow"
-                    className="p-10"
-                    width="400"
-                  />
-                </CardHeader>
-              </div>
-              <CardBody className="">
-                <span className="mb-2">
-                  <span className="flex flex-col space-y-10">
-                    <span className="text-2xl font-bold text-left text-black">
-                      {producto.title}
-                    </span>
-                    <div>
-                      <div className="font-bold text-left text-black">
-                        Descripcion
-                      </div>
-                      <div className="text-left">{producto.description}</div>
-                    </div>
-                    <div className="text-right">
-                      {"Category: " + producto.category}
-                    </div>
-                  </span>
+    <div className="grid justify-items-center">
+      <div className="w-full sm:w-3/4 lg:w-2/3 xl:w-1/2">
+        <br />
+        <br />
+        <Card className="bg-gradient-to-t from-gray-200 grid grid-cols-1 sm:grid-cols-2">
+          <div className="flex justify-center">
+            <div className="flex flex-col">
+            <CardHeader className="flex justify-center ">
+              <img
+                src={producto.image}
+                alt="img-blur-shadow"
+                className="p-10 w-full"
+                // Add a style to control the height of the image (optional)
+                style={{ maxHeight: "400px" }}
+              />
+            </CardHeader>
+            <div className="flex justify-center"></div>
+          </div></div>
+          <CardBody className="p-4">
+            <span className="mb-2">
+              <span className="flex flex-col space-y-4">
+                <span className="text-2xl font-bold text-left text-black">
+                  {producto.title}
                 </span>
-                {agregarCantidad > 0 ? (
-                  <div>
-                    <Link to="/products " >
-                      <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > ⬅ Seguir Comprando </Button>
-                    </Link>
-                    <br />
-                    <Link to="/cart" >
-                      <Button className="bg-orange-600 rounded-full mt-5 item" color="orange" > Terminar Compra </Button>
-                    </Link>
-                  </div>) :
-                  (<ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad} />)
-                }
-              </CardBody>
-              <div></div>
-              <CardFooter divider className="p-2">
-                <div></div>
-              </CardFooter>
-            </Card>
-          </div>
-        </div>
-      </ThemeProvider>
-    </>
+                <div>
+                  <div className="font-bold text-left text-black">
+                    Descripcion
+                  </div>
+                  <div className="text-left">{producto.description}</div>
+                </div>
+                <div className="text-right">
+                  {"Category: " + producto.category}
+                </div>
+              </span>
+            </span>
+            {agregarCantidad > 0 ? (
+              <div className="space-y-2">
+                <Link to="/products">
+                  <Button className="bg-orange-600 rounded-full item">
+                    ⬅ Seguir Comprando
+                  </Button>
+                </Link>
+                <Link to="/cart">
+                  <Button className="bg-orange-600 rounded-full item">
+                    Terminar Compra
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <ItemCount inicial={1} stock={producto.stock} precio={producto.price} funcionAgregar={manejadorCantidad} />
+            )}
+          </CardBody>
+        </Card>
+      </div>
+    </div>
   );
 };
 
 export default ProductDetail;
+
