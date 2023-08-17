@@ -93,7 +93,7 @@ const Checkout = () => {
     
             
             <button type="submit" className='transition animate__delay-2s animate__animated animate__bounceOutRight bg-orange-600 rounded-full text-white hover:bg-orange-800 hover:   hover:text-white px-3 py-2 text-sm font-medium'>Finalizar Compra</button>
-            <p>fuiste troliado apaga la animacion (L)</p>
+            <p>fuiste troliado apaga la animacion rata!(L)</p>
           </form>
           {orderId && (
             <p className="checkout-thank-you">
