@@ -11,11 +11,11 @@ const CartItem = ({ item, cantidad }) => {
         <ul role="list" className="-my-6 divide-y divide-gray-200">
 
           <li key={item.id} className="flex py-6">
-          <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+          <div className="h-24 w-24 flex-shrink-0 bg-white overflow-hidden rounded-md border border-gray-200">
   <img
     src={item.image}
     alt={item.title}
-    className="h-full w-full object-cover object-center"
+    className="h-full bg-white w-full object-cover object-center"
     style={{ objectFit: 'contain', objectPosition: 'center' }}
   />
 </div>
