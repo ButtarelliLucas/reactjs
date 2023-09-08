@@ -2,15 +2,18 @@ import React, { useState, useEffect } from "react";
 import ProductItem from "../ProductItem/ProductItem";
 import 'animate.css'
 
-const ItemList = ({ productos }) => {
+const ItemList = ({ productos, onProductsLoaded }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     if (currentIndex < productos.length) {
       const timer = setTimeout(() => {
         setCurrentIndex(currentIndex + 1);
-      }, 120); // Cambia este valor al retardo deseado en milisegundos
+      }, 100); // Cambia este valor al retardo deseado en milisegundos
       return () => clearTimeout(timer);
+    } 
+    else {
+      onProductsLoaded()
     }
   }, [currentIndex, productos]);
 

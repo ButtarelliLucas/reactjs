@@ -4,7 +4,7 @@ import ItemList from "../ItemList/ItemList";
 import { db } from "../../services/config";
 import { getDocs, collection, query, where } from 'firebase/firestore';
 
-const ItemListContainer = () => {
+const ItemListContainer = ({onProductsLoaded}) => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
   const { categoryId } = useParams();
@@ -37,7 +37,7 @@ const ItemListContainer = () => {
 
   return (
     <div className="flex animate__animated animate__fadeIn justify-center">
-      <ItemList productos={productos} />
+      <ItemList productos={productos}  onProductsLoaded={onProductsLoaded}/>
     </div>
   );
 };
