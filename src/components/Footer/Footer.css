@@ -97,3 +97,11 @@
     font-weight: bold;
     color: #ff9900;
   }
+
+/* Cambios para dispositivos móviles */
+@media (max-width: 767px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
