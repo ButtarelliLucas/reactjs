@@ -10,8 +10,8 @@ const Footer = () => {
         <div className="footer-section">
         <h3><strong>Contacto</strong></h3>
           <p><strong>Dirección:</strong> Calle Principal, Ciudad Autónoma de Buenos Aires.</p>
-          <p><strong>Teléfono:</strong> +54 9 11 11111111</p>
-          <p><strong>Email:</strong> Empresa@Empresa.com</p>
+          <p><strong>Teléfono:</strong> +54 9 11 3279 3837</p>
+          <p><strong>Email:</strong> buttarelli.lucas@gmail.com</p>
         </div>
         <div className="footer-section">
           <h3><strong>Enlaces Rápidos</strong></h3>
